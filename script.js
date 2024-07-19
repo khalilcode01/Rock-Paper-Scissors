@@ -1,6 +1,6 @@
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3)
-    let choices = ["rock", "paper", "scissors"]
+    let choices = ["Rock", "Paper", "Scissors"]
     if(randomNumber == 0)
         return choices[0];
     else if(randomNumber == 1)
@@ -12,14 +12,10 @@ function getHumanChoice() {
     let userChoice = prompt("Enter your choice");
     return userChoice.toLowerCase();
 }
-
-let humanScore = 0;
-let computerScore = 0;
-
 function playRound (humanChoice, computerChoice) {
     if(humanChoice == computerChoice)
         console.log("Tie!")
-    else if(humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "scissors" && computerChoice == "paper" || humanChoice == "paper" && computerChoice == "rock"){
+    else if(humanChoice == "Rock" && computerChoice == "Scissors" || humanChoice == "Scissors" && computerChoice == "Paper" || humanChoice == "Paper" && computerChoice == "Rock"){
         humanScore++;
         console.log("You won your score is " + humanScore);
     }
@@ -30,11 +26,6 @@ function playRound (humanChoice, computerChoice) {
 }
 
 function playGame() {
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
     if(humanScore > computerScore)
         console.log("You won!");
     else if(humanScore < computerScore)
@@ -42,4 +33,11 @@ function playGame() {
     else if (humanScore == computerScore)
         console.log("It's a tie!");
 }
-playGame();
+let humanScore = 0;
+let computerScore = 0;
+let buttons = document.querySelectorAll(".btn");
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.textContent, getComputerChoice());
+    });
+});
