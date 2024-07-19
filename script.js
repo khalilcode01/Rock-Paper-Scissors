@@ -14,14 +14,14 @@ function getHumanChoice() {
 }
 function playRound (humanChoice, computerChoice) {
     if(humanChoice == computerChoice)
-        console.log("Tie!")
+        result.textContent = "Tie!"
     else if(humanChoice == "Rock" && computerChoice == "Scissors" || humanChoice == "Scissors" && computerChoice == "Paper" || humanChoice == "Paper" && computerChoice == "Rock"){
         humanScore++;
-        console.log("You won your score is " + humanScore);
+        result.textContent = "You won your score is " + humanScore;
     }
     else{
         computerScore++;
-        console.log("You lost your score is " + humanScore);
+        result.textContent = "You lost your score is " + humanScore;
     }
 }
 
@@ -36,6 +36,7 @@ function playGame() {
 let humanScore = 0;
 let computerScore = 0;
 let buttons = document.querySelectorAll(".btn");
+let result = document.querySelector(".result");
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playRound(button.textContent, getComputerChoice());
