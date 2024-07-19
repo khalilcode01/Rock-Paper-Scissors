@@ -8,12 +8,9 @@ function getComputerChoice() {
     else
         return choices[2];
 }
-function getHumanChoice() {
-    let userChoice = prompt("Enter your choice");
-    return userChoice.toLowerCase();
-}
 function playRound (humanChoice, computerChoice) {
     roundCount++;
+    score.textContent = roundCount + " | 5";
     if(roundCount >= 5){
         playGame();
         return 0;
@@ -28,6 +25,7 @@ function playRound (humanChoice, computerChoice) {
         computerScore++;
         result.textContent = "You lost your score is " + humanScore;
     }
+
 }
 
 function playGame() {
@@ -46,6 +44,7 @@ let computerScore = 0;
 let roundCount = 0;
 let buttons = document.querySelectorAll(".btn");
 let result = document.querySelector(".result");
+let score = document.querySelector(".score");
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playRound(button.textContent, getComputerChoice());
