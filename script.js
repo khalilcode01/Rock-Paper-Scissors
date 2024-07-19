@@ -13,6 +13,11 @@ function getHumanChoice() {
     return userChoice.toLowerCase();
 }
 function playRound (humanChoice, computerChoice) {
+    roundCount++;
+    if(roundCount >= 5){
+        playGame();
+        return 0;
+    }
     if(humanChoice == computerChoice)
         result.textContent = "Tie!"
     else if(humanChoice == "Rock" && computerChoice == "Scissors" || humanChoice == "Scissors" && computerChoice == "Paper" || humanChoice == "Paper" && computerChoice == "Rock"){
@@ -27,14 +32,18 @@ function playRound (humanChoice, computerChoice) {
 
 function playGame() {
     if(humanScore > computerScore)
-        console.log("You won!");
+        result.textContent = "You won!";
     else if(humanScore < computerScore)
-        console.log("You lost");
+        result.textContent = "You lost";
     else if (humanScore == computerScore)
-        console.log("It's a tie!");
+        result.textContent = "It's a tie!";
+    humanScore = 0;
+    computerScore = 0;
+    roundCount = 0;
 }
 let humanScore = 0;
 let computerScore = 0;
+let roundCount = 0;
 let buttons = document.querySelectorAll(".btn");
 let result = document.querySelector(".result");
 buttons.forEach((button) => {
