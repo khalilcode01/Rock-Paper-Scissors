@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.btn {
+    height: 30px;
+}
+.result, .score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+
+}
+.result {
+    font-size: 19px;
+    height: 50px;
+    margin-bottom: -10px;
+}
+.score {
+    height: 30px;
+}
+.screen {
+    display: flex;
+    flex-direction: column;
+
+}
